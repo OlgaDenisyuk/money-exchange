@@ -10,10 +10,10 @@ module.exports = function makeExchange(currency) {
     var result = {};
 
     for (var key in coins) {
-        var n = Math.floor(amount / coins[key]);
+        var n = Math.floor(currency / coins[key]);
         if (n > 0) { 
             result[key] = n; 
-            amount -= n * coins[key]; 
+            currency -= n * coins[key]; 
         }
     }
 
