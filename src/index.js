@@ -8,18 +8,17 @@ module.exports = function makeExchange(currency) {
         'P': 1
     };
     var result = {};
-    var errorString = {error:"You are rich, my friend! We don't have so much coins for exchange"}; 
+    var errorString = {error: "You are rich, my friend! We don\'t have so much coins for exchange"}; 
 
-    for (var key in coins) {
-        var n = Math.floor(currency / coins[key]);
-        if (n > 0) { 
-            result[key] = n; 
-            currency -= n * coins[key]; 
+    if(currency <= 10000){ 
+        for (var key in coins) {
+            var n = Math.floor(currency / coins[key]);
+            if (n > 0) { 
+                result[key] = n; 
+                currency -= n * coins[key]; 
+            }
         }
-    }
-
-   
-    if(currency > 10000){ 
-       return errorString;
-    } else { return result;}
+        return result;
+    } 
+    else { return errorString;}
 }
